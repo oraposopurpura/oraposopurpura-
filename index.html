@@ -50,8 +50,10 @@ function message(s,who){const d=document.createElement('div');d.className='bubbl
 function offer(reason){if(offered)return;offered=true;message(reason,'bot');const box=document.createElement('div');box.className='bubble';const a=document.createElement('a');a.className='btn';a.href=whatsapp;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Hablar con Nacho por WhatsApp ↗';box.append(a);log.append(box);log.scrollTop=log.scrollHeight}
 function ask(raw){
  const value=raw.trim().slice(0,300);if(!value)return;
- count++;message(value,'user');
- const [response,needsHuman]=answer(value);message(response,'bot');
+ message(value,'user');
+ const [response,needsHuman,isFarewell]=answer(value);
+ if(isFarewell){message(response,'bot');count=0;unknown=0;offered=false;return;}
+ count++;message(response,'bot');
  if(needsHuman)unknown++;
  if(needsHuman)offer('Para resolverlo sin darte respuestas imprecisas, puedes pasar a WhatsApp cuando quieras.');
  else if(count>=5)offer('Ya llevamos varias preguntas. Si prefieres seguir con una persona, puedes escribir directamente a Nacho desde tu móvil. También puedes seguir preguntándome aquí.');
