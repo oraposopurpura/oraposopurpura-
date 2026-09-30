@@ -33,6 +33,7 @@ let count=0,unknown=0,offered=false;
 function answer(s){
  const q=fold(s).trim();
  if(/^(gracias|muchas gracias|mil gracias|vale gracias|ok gracias|perfecto gracias|genial gracias|eso es todo|nada mas|hasta luego|adios|chao|chau|bye|ya esta|perfecto|vale|ok)[!., ]*$/.test(q))return ['¡Muchas gracias por tu interés en O Raposo Púrpura! Ha sido un placer ayudarte. Te esperamos en el taller.',false,true];
+ if(/(donde|direccion|ubicacion|localizacion|mapa|gps|llegar|como ir|encontrar|situado)/.test(q))return ['Estamos en Rúa Alcalde Suárez Ferrín, 3A, bajo, 15011 A Coruña, en Los Rosales. Al final de esta página tienes el mapa y un botón «Cómo llegar con Google Maps» para abrir la ruta desde tu ubicación.',false];
  if(/(hola|buenas|hey|saludos)/.test(q))return ['¡Hola! 🦊 Puedo informarte sobre horarios, precios, clases de pintura y cerámica o explicarte cómo trabajamos.',false];
  if(/(human|persona|nacho|hablar contigo|contact|telefono|whatsapp|wasap)/.test(q))return ['Claro. Puedes escribir directamente a Nacho por WhatsApp. Te dejo el enlace aquí debajo.',true];
  if(/(inscri|apunt|reserv|plaza|disponib|matricul)/.test(q))return ['Para apuntarte, consultar plazas o elegir turno, escribe a Nacho por WhatsApp. El asistente no puede confirmar disponibilidad ni matrículas.',true];
