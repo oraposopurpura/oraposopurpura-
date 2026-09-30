@@ -45,7 +45,7 @@ function answer(s){
  if(/(pintura|ceramica|actividad|elegir|opcion|clase)/.test(q))return ['Puedes elegir clases de pintura o cerámica. En ellas desarrollarás un proyecto propio con el acompañamiento de Nacho para poder realizarlo a tu ritmo. Si quieres conocer las tarifas u horarios, también puedo explicártelos.',false];
  return ['No tengo ese dato confirmado. Si quieres, Nacho puede atenderte personalmente por WhatsApp.',true];
 }
-function message(s,who){const d=document.createElement('div');d.className='bubble'+(who==='user'?' user':'');d.textContent=s;log.append(d);log.scrollTop=log.scrollHeight}
+function message(s,who){const d=document.createElement('div');d.className='bubble'+(who==='user'?' user':'');d.textContent=(who==='bot'?'🦊💜 ':'')+s;log.append(d);log.scrollTop=log.scrollHeight}
 function offer(reason){if(offered)return;offered=true;message(reason,'bot');const box=document.createElement('div');box.className='bubble';const a=document.createElement('a');a.className='btn';a.href=whatsapp;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Hablar con Nacho por WhatsApp ↗';box.append(a);log.append(box);log.scrollTop=log.scrollHeight}
 function ask(raw){
  const value=raw.trim().slice(0,300);if(!value)return;
